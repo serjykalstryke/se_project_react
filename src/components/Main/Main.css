@@ -1,0 +1,17 @@
+.cards__text {
+	font-family: "Cabinet Grotesk", sans-serif;
+	font-size: 20px;
+    line-height: 100%;
+    font-style: bold;
+	color: #000000;
+    margin: 40px auto 34px;
+}
+
+.cards__list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    gap: 21px;
+}
