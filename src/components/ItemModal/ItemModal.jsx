@@ -1,25 +1,15 @@
-function ItemModal({ isOpen, card, onClose }) {
-  const handleOverlayClick = (e) => {
-    if (e.target.classList.contains("modal")) onClose();
-  };
+import "./ItemModal.css";
 
-  if (!card) return null;
-
+function ItemModal({ isOpen, card, handleClose }) {
   return (
-    <div
-      className={`modal modal_type_preview ${isOpen ? "modal_is-opened" : ""}`}
-      onMouseDown={handleOverlayClick}
-    >
-      <div className="modal__content">
-        <button
-          type="button"
-          className="modal__close"
-          onClick={onClose}
-          aria-label="Close modal"
-        />
-        <img className="modal__image" src={card.link} alt={card.name} />
-        <div className="modal__caption">
-          <p className="modal__name">{card.name}</p>
+    <div className={`modal ${isOpen ==="preview" ? "item__modal-opened" : ""}`}>
+      <div className="modal__content modal__content_type_image">
+        <button type="button" className="modal__close" onClick={handleClose}>
+					CLOSE
+				</button>
+        <img src={card.link} alt="" className="modal__image" />
+        <div className="modal__footer">
+          <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>
       </div>

@@ -8,10 +8,11 @@
 }
 
 .cards__list {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    gap: 21px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  gap: 21px;
 }
+

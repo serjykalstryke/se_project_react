@@ -1,0 +1,141 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #0000004d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Cabinet Grotesk", sans-serif;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 700;
+	font-style: bold;
+	visibility: hidden;
+	opacity: 0;
+	transition:
+		opacity 0.5s ease-in-out,
+		visibility 0s linear 0.5s;
+}
+
+.modal__opened {
+	opacity: 1;
+	visibility: visible;
+	transition:
+		opacity 0.5s ease-in-out,
+		visibility 0s linear 0s;
+}
+
+.modal__content {
+	background-color: #fff;
+	position: relative;
+	padding: 28px 28px 36px;
+	border-radius: 20px;
+	max-width: 500px;
+	width: 100%;
+	border: 1px solid #0000004d;
+	display: flex;
+	flex-direction: column;
+	transform: translateY(12px) scale(0.98);
+	transition: transform 0.25s ease-in-out;
+}
+
+.modal__opened .modal__content {
+	transform: translateY(0) scale(1);
+}
+
+.modal__title {
+	margin: 0;
+	margin-bottom: 24px;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 700;
+	font-style: bold;
+	letter-spacing: 0%;
+}
+
+.modal__close {
+	position: absolute;
+	top: 20px;
+	right: 28px;
+	background: none;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.modal__form {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.modal__label {
+	margin-top: 24px;
+}
+
+.modal__input {
+	display: block;
+	margin-top: 3px;
+	width: 100%;
+	box-sizing: border-box;
+	border-style: none;
+	border-bottom: 1px solid #00000080;
+	padding: 0;
+}
+
+.modal__legend {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 500;
+	margin-bottom: 8px;
+}
+
+.modal__radio-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 24px 0 32px;
+	padding: 0;
+	border-style: none;
+}
+
+.modal__label_type_radio {
+	opacity: 0.5;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	cursor: pointer;
+	transition: opacity 120ms ease-in-out;
+}
+
+.modal__label_type_radio:has(.modal__radio-input:checked) {
+	opacity: 1;
+}
+
+.modal__radio-input {
+	margin: 0;
+	accent-color: #000;
+	transform: scale(1.15);
+	transform-origin: left center;
+}
+
+.modal__submit {
+	margin-top: auto;
+	align-self: flex-start;
+	white-space: nowrap;
+	width: 124px;
+	height: 36px;
+	padding: 0 16px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #0000004d;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	cursor: pointer;
+}
