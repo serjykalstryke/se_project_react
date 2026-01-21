@@ -12,7 +12,6 @@
 	font-size: 16px;
 	line-height: 20px;
 	font-weight: 700;
-	font-style: bold;
 	visibility: hidden;
 	opacity: 0;
 	transition:
@@ -52,7 +51,6 @@
 	font-size: 16px;
 	line-height: 20px;
 	font-weight: 700;
-	font-style: bold;
 	letter-spacing: 0%;
 }
 

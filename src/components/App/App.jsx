@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { weatherApiKey, latitude, longitude } from "../../utils/constants";
+
+import { defaultClothingItems } from "../../utils/constants";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -23,6 +25,9 @@ function App() {
 	});
 	const [activeModal, setActiveModal] = React.useState("");
 	const [selectedCard, setSelectedCard] = React.useState(null);
+
+	const [clothingItems, setClothingItems] =
+		React.useState(defaultClothingItems);
 
 	const handleCardClick = (card) => {
 		setSelectedCard(card);
@@ -54,7 +59,11 @@ function App() {
 		<div className="page">
 			<div className="page__content">
 				<Header handleAddClick={handleAddClick} weatherData={weatherData} />
-				<Main weatherData={weatherData} handleCardClick={handleCardClick} />
+				<Main
+					weatherData={weatherData}
+					handleCardClick={handleCardClick}
+					clothingItems={clothingItems}
+				/>
 				<Footer />
 			</div>
 			<AddGarmentModal

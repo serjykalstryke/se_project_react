@@ -3,7 +3,14 @@ import "./ModalWithForm.css";
 import React from "react";
 import xButtonGray from "../../assets/xButtonGray.svg";
 
-function ModalWithForm({ children, buttonText, title, isOpen, handleClose }) {
+function ModalWithForm({
+	name,
+	children,
+	buttonText,
+	title,
+	isOpen,
+	handleClose,
+}) {
 	const handleOverlayClick = (e) => {
 		if (e.target === e.currentTarget) {
 			handleClose();
@@ -23,15 +30,17 @@ function ModalWithForm({ children, buttonText, title, isOpen, handleClose }) {
 
 	return (
 		<div
-			className={`modal ${isOpen ? "modal__opened" : ""}`}
+			className={`modal modal_type_${name} ${isOpen ? "modal__opened" : ""}`}
 			onMouseDown={handleOverlayClick}
 		>
 			<div className="modal__content">
 				<h2 className="modal__title">{title}</h2>
+
 				<button type="button" className="modal__close" onClick={handleClose}>
 					<img src={xButtonGray} alt="Close button" />
 				</button>
-				<form action="" className="modal__form">
+
+				<form name={name} className="modal__form" noValidate>
 					{children}
 					<button type="submit" className="modal__submit">
 						{buttonText}

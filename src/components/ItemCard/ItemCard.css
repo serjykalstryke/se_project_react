@@ -28,39 +28,39 @@
 	line-height: 20px;
 	font-weight: 700;
 
-	max-width: calc(100% - 32px); /* matches left/right padding */
+	max-width: calc(100% - 32px);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
 .card__image {
-	position: static; /* IMPORTANT: no absolute positioning */
+	position: static; 
 	width: 100%;
-	max-width: 226px; /* keeps your “ideal” size on wide cards */
+	max-width: 226px; 
 	max-height: 100%;
 	height: auto;
-	object-fit: contain; /* scale without cropping */
+	object-fit: contain; 
 	display: block;
 	max-height: calc(
 		326px - 50px - 16px
-	); /* card height - top pad - bottom pad */
+	); 
 }
 
 @media (max-width: 1200px) {
 	.card {
 		flex-basis: calc((100% - 2 * 21px) / 3);
-	} /* 3 per row */
+	} 
 }
 
 @media (max-width: 900px) {
 	.card {
 		flex-basis: calc((100% - 1 * 21px) / 2);
-	} /* 2 per row */
+	} 
 }
 
 @media (max-width: 600px) {
 	.card {
 		flex-basis: 100%;
-	} /* 1 per row */
+	} 
 }
