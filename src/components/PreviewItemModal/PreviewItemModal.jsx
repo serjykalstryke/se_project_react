@@ -1,3 +1,5 @@
+import "./PreviewItemModal.css";
+
 import ItemModal from "../ItemModal/ItemModal";
 
 function PreviewItemModal({ isOpen, card, onClose }) {
