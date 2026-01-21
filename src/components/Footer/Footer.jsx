@@ -1,7 +1,10 @@
+import "./Footer.css";
+
 function Footer() {
   return (
     <footer className="footer">
-      {/* copyright + year later */}
+      <p className="footer__copyright">Developed by David Stinnett</p>
+      <p className="footer__year">{new Date().getFullYear()}</p>
     </footer>
   );
 }

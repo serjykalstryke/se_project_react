@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import xButtonGray from "../../assets/xButtonGray.svg";
 
 function ModalWithForm({
 	children,
@@ -12,7 +13,7 @@ function ModalWithForm({
 			<div className="modal__content">
 				<h2 className="modal__title">{title}</h2>
 				<button type="button" className="modal__close" onClick={handleClose}>
-					CLOSE
+					<img src={xButtonGray} alt="Close button" />
 				</button>
 				<form action="" className="modal__form">
 					{children}
