@@ -17,7 +17,7 @@ import {
 	parseWeatherData,
 } from "../../utils/weatherAPI";
 
-import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnit";
+import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
 	const { currentTemperatureUnit, setCurrentTemperatureUnit } =

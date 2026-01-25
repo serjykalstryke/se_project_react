@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './components//App/App.jsx'
 import './index.css'
-import { CurrentTemperatureUnitProvider } from './contexts/CurrentTemperatureUnit.jsx'
+import { CurrentTemperatureUnitProvider } from './contexts/CurrentTemperatureUnitContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

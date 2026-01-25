@@ -13,7 +13,7 @@ import fogNight from "../../assets/fogNight.svg";
 
 import { getConditionBucket } from "../../utils/weatherAPI";
 
-import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnit";
+import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnitContext";
 
 const images = {
 	clear: { day: clearDay, night: clearNight },

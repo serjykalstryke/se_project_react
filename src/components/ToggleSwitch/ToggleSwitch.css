@@ -23,13 +23,7 @@
 	transition: all 0.25s;
 }
 
-.toggle-switch__checkbox:checked + .toggle-switch__slider {
-	left: 28px;
-}
-
 .toggle-switch__text {
-	color: #00000080;
-	z-index: 1;
 	position: absolute;
 	font-family: "Cabinet Grotesk", sans-serif;
 	font-weight: 700;
@@ -45,6 +39,15 @@
 	color: #ffffff;
 }
 
+.toggle-switch__text_C {
+	right: 8px;
+	color: #00000080;
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__slider {
+	left: 28px;
+}
+
 .toggle-switch__checkbox:checked ~ .toggle-switch__text_F {
 	color: #00000080;
 }
@@ -53,6 +56,5 @@
 	color: #ffffff;
 }
 
-.toggle-switch__text_C {
-	right: 8px;
-}
+
+
