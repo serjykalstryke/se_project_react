@@ -17,7 +17,12 @@ import {
 	parseWeatherData,
 } from "../../utils/weatherAPI";
 
+import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnit";
+
 function App() {
+	const { currentTemperatureUnit, setCurrentTemperatureUnit } =
+		useCurrentTemperatureUnit();
+
 	const [weatherData, setWeatherData] = React.useState({
 		type: "",
 		temperature: null,
@@ -55,10 +60,19 @@ function App() {
 			});
 	}, []);
 
+	const handleToggleSwitchChange = () => {
+		setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+	};
+
 	return (
 		<div className="page">
 			<div className="page__content">
-				<Header handleAddClick={handleAddClick} weatherData={weatherData} />
+				<Header
+					handleAddClick={handleAddClick}
+					weatherData={weatherData}
+					handleToggleSwitchChange={handleToggleSwitchChange}
+					currentTemperatureUnit={currentTemperatureUnit}
+				/>
 				<Main
 					weatherData={weatherData}
 					handleCardClick={handleCardClick}

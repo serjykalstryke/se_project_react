@@ -13,29 +13,42 @@ import fogNight from "../../assets/fogNight.svg";
 
 import { getConditionBucket } from "../../utils/weatherAPI";
 
+import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnit";
+
 const images = {
-  clear:   { day: clearDay,   night: clearNight },
-  clouds:  { day: cloudsDay,  night: cloudsNight },
-  rain:    { day: rainDay,    night: rainNight },
-  snow:    { day: snowDay,    night: snowNight },
-  fog:     { day: fogDay,     night: fogNight },
-  drizzle: { day: rainDay,    night: rainNight },      
-  thunderstorm: { day: rainDay, night: rainNight },     
+	clear: { day: clearDay, night: clearNight },
+	clouds: { day: cloudsDay, night: cloudsNight },
+	rain: { day: rainDay, night: rainNight },
+	snow: { day: snowDay, night: snowNight },
+	fog: { day: fogDay, night: fogNight },
+	drizzle: { day: rainDay, night: rainNight },
+	thunderstorm: { day: rainDay, night: rainNight },
 };
 
 function WeatherCard({ weatherData }) {
-  const bucket = getConditionBucket(weatherData.conditionId);
-  const timeKey = weatherData.isDay ? "day" : "night";
-  const imgSrc = images[bucket]?.[timeKey] ?? clearDay;
+	const { currentTemperatureUnit } = useCurrentTemperatureUnit();
 
-  return (
-    <section className="weather-card">
-      <p className="weather-card__temp">
-        {weatherData.temperature ?? "--"}&deg; F
-      </p>
-      <img src={imgSrc} alt={`${bucket} ${timeKey}`} className="weather-card__image" />
-    </section>
-  );
+	const displayTemp =
+		currentTemperatureUnit === "C"
+			? Math.round(((weatherData.temperature - 32) * 5) / 9) 
+			: weatherData.temperature;
+
+	const bucket = getConditionBucket(weatherData.conditionId);
+	const timeKey = weatherData.isDay ? "day" : "night";
+	const imgSrc = images[bucket]?.[timeKey] ?? clearDay;
+
+	return (
+		<section className="weather-card">
+			<p className="weather-card__temp">
+				{displayTemp ?? "--"}&deg; {currentTemperatureUnit}
+			</p>
+			<img
+				src={imgSrc}
+				alt={`${bucket} ${timeKey}`}
+				className="weather-card__image"
+			/>
+		</section>
+	);
 }
 
 export default WeatherCard;
