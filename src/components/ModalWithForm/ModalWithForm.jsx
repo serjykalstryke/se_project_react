@@ -10,9 +10,10 @@ function ModalWithForm({
 	title,
 	isOpen,
 	handleClose,
+	onSubmit,
 }) {
-	const handleOverlayClick = (e) => {
-		if (e.target === e.currentTarget) {
+	const handleOverlayClick = (event) => {
+		if (event.target === event.currentTarget) {
 			handleClose();
 		}
 	};
@@ -20,8 +21,8 @@ function ModalWithForm({
 	React.useEffect(() => {
 		if (!isOpen) return;
 
-		const handleEsc = (e) => {
-			if (e.key === "Escape") handleClose();
+		const handleEsc = (event) => {
+			if (event.key === "Escape") handleClose();
 		};
 
 		document.addEventListener("keydown", handleEsc);
@@ -40,7 +41,7 @@ function ModalWithForm({
 					<img src={xButtonGray} alt="Close button" />
 				</button>
 
-				<form name={name} className="modal__form" noValidate>
+				<form name={name} onSubmit={onSubmit} className="modal__form" noValidate>
 					{children}
 					<button type="submit" className="modal__submit">
 						{buttonText}

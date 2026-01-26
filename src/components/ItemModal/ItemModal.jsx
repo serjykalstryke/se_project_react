@@ -4,8 +4,8 @@ import React from "react";
 import xButton from "../../assets/xButton.svg";
 
 function ItemModal({ isOpen, card, handleClose }) {
-	const handleOverlayClick = (e) => {
-		if (e.target === e.currentTarget) {
+	const handleOverlayClick = (event) => {
+		if (event.target === event.currentTarget) {
 			handleClose();
 		}
 	};
@@ -13,8 +13,8 @@ function ItemModal({ isOpen, card, handleClose }) {
 	React.useEffect(() => {
 		if (!isOpen) return;
 
-		const handleEsc = (e) => {
-			if (e.key === "Escape") handleClose();
+		const handleEsc = (event) => {
+			if (event.key === "Escape") handleClose();
 		};
 
 		document.addEventListener("keydown", handleEsc);

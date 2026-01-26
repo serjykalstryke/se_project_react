@@ -47,3 +47,17 @@
 	transform: scale(1.15);
 	transform-origin: left center;
 }
+
+.add-garment-modal__error {
+	color: red;
+	font-size: 14px;
+	position: absolute;
+	bottom: 75px;
+	left: 28px;
+	right: 28px;
+	margin: 0;
+}
+
+.add-garment-modal__error_hidden {
+	visibility: hidden;
+}

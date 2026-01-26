@@ -1,7 +1,8 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddGarmentModal.css";
 
-function AddGarmentModal({ isOpen, handleClose }) {
+function AddGarmentModal({ isOpen, handleClose, values, handleChange, resetForm, onSubmit, formError }) {
+
 	return (
 		<ModalWithForm
 			name="add-garment"
@@ -9,6 +10,7 @@ function AddGarmentModal({ isOpen, handleClose }) {
 			title="New Garment"
 			isOpen={isOpen}
 			handleClose={handleClose}
+			onSubmit={onSubmit}
 		>
 			<label htmlFor="name" className="add-garment-modal__label">
 				Name{" "}
@@ -17,16 +19,22 @@ function AddGarmentModal({ isOpen, handleClose }) {
 					className="add-garment-modal__input"
 					id="name"
 					placeholder="Name"
+					name="name"
+					value={values.name}
+					onChange={handleChange}
 				/>
 			</label>
 
-			<label htmlFor="imageUrl" className="add-garment-modal__label">
+			<label htmlFor="link" className="add-garment-modal__label">
 				Image{" "}
 				<input
 					type="url"
 					className="add-garment-modal__input"
-					id="imageUrl"
+					id="link"
 					placeholder="Image URL"
+					name="link"
+					value={values.link}
+					onChange={handleChange}
 				/>
 			</label>
 
@@ -40,6 +48,8 @@ function AddGarmentModal({ isOpen, handleClose }) {
 						type="radio"
 						className="add-garment-modal__radio-input"
 						value="hot"
+						checked={values.weather === "hot"}
+						onChange={handleChange}
 					/>
 					<span className="add-garment-modal__radio-text">Hot</span>
 				</label>
@@ -51,6 +61,8 @@ function AddGarmentModal({ isOpen, handleClose }) {
 						type="radio"
 						className="add-garment-modal__radio-input"
 						value="warm"
+						checked={values.weather === "warm"}
+						onChange={handleChange}
 					/>
 					<span className="add-garment-modal__radio-text">Warm</span>
 				</label>
@@ -62,10 +74,13 @@ function AddGarmentModal({ isOpen, handleClose }) {
 						type="radio"
 						className="add-garment-modal__radio-input"
 						value="cold"
+						checked={values.weather === "cold"}
+						onChange={handleChange}
 					/>
 					<span className="add-garment-modal__radio-text">Cold</span>
 				</label>
 			</fieldset>
+			<p className={`add-garment-modal__error ${formError ? '' : 'add-garment-modal__error_hidden'}`}>{formError || 'Placeholder'}</p>
 		</ModalWithForm>
 	);
 }
