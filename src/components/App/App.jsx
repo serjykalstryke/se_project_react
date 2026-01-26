@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { Routes, Route } from "react-router-dom";
+
 import { weatherApiKey, latitude, longitude } from "../../utils/constants";
 
 import { defaultClothingItems } from "../../utils/constants";
@@ -7,6 +9,7 @@ import { defaultClothingItems } from "../../utils/constants";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import AddGarmentModal from "../AddGarmentModal/AddGarmentModal";
 import ItemModal from "../ItemModal/ItemModal";
@@ -24,7 +27,11 @@ function App() {
 	const { currentTemperatureUnit, setCurrentTemperatureUnit } =
 		useCurrentTemperatureUnit();
 
-	const { values, handleChange: originalHandleChange, resetForm } = useForm({
+	const {
+		values,
+		handleChange: originalHandleChange,
+		resetForm,
+	} = useForm({
 		name: "",
 		link: "",
 		weather: "",
@@ -52,8 +59,6 @@ function App() {
 
 	const [clothingItems, setClothingItems] =
 		React.useState(defaultClothingItems);
-
-	
 
 	const handleCardClick = (card) => {
 		setSelectedCard(card);
@@ -105,10 +110,6 @@ function App() {
 	};
 
 	useEffect(() => {
-		console.log("Updated clothingItems:", clothingItems);
-	}, [clothingItems]);
-
-	useEffect(() => {
 		requestWeather(weatherApiKey, latitude, longitude)
 			.then((data) => {
 				const parsedData = parseWeatherData(data);
@@ -133,11 +134,20 @@ function App() {
 					handleToggleSwitchChange={handleToggleSwitchChange}
 					currentTemperatureUnit={currentTemperatureUnit}
 				/>
-				<Main
-					weatherData={weatherData}
-					handleCardClick={handleCardClick}
-					clothingItems={clothingItems}
-				/>
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<Main
+								weatherData={weatherData}
+								handleCardClick={handleCardClick}
+								clothingItems={clothingItems}
+							/>
+						}
+					/>
+					<Route  path="/profile" element={<Profile />} />
+				</Routes>
+
 				<Footer />
 			</div>
 			<AddGarmentModal
