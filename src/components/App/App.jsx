@@ -136,7 +136,7 @@ function App() {
 				/>
 				<Routes>
 					<Route
-						path="/"
+						path="/se_project_react/"
 						element={
 							<Main
 								weatherData={weatherData}
@@ -145,7 +145,7 @@ function App() {
 							/>
 						}
 					/>
-					<Route  path="/profile" element={<Profile />} />
+					<Route  path="/se_project_react/profile" element={<Profile />} />
 				</Routes>
 
 				<Footer />
