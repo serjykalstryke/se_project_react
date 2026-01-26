@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import { weatherApiKey, latitude, longitude } from "../../utils/constants";
 
@@ -136,6 +136,10 @@ function App() {
 				/>
 				<Routes>
 					<Route
+						path="/"
+						element={<Navigate to="/dashboard" replace />}
+					/>
+					<Route
 						path="/dashboard"
 						element={
 							<Main
@@ -145,7 +149,8 @@ function App() {
 							/>
 						}
 					/>
-					<Route  path="/profile" element={<Profile />} />
+					<Route path="/profile" element={<Profile />} />
+					<Route path="*" element={<Navigate to="/dashboard" replace />} />
 				</Routes>
 
 				<Footer />
