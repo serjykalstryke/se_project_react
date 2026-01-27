@@ -135,10 +135,7 @@ function App() {
 					currentTemperatureUnit={currentTemperatureUnit}
 				/>
 				<Routes>
-					<Route
-						path="/"
-						element={<Navigate to="/dashboard" replace />}
-					/>
+					<Route path="/" element={<Navigate to="/dashboard" replace />} />
 					<Route
 						path="/dashboard"
 						element={
@@ -149,7 +146,15 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="/profile" element={<Profile />} />
+					<Route
+						path="/profile"
+						element={
+							<Profile
+								clothingItems={clothingItems}
+								handleCardClick={handleCardClick}
+							/>
+						}
+					/>
 					<Route path="*" element={<Navigate to="/dashboard" replace />} />
 				</Routes>
 

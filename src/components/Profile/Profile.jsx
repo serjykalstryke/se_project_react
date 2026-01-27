@@ -1,10 +1,12 @@
 import "./Profile.css";
+import SideBar from "../SideBar/SideBar.jsx";
+import ClothesSection from "../ClothesSection/ClothesSection.jsx";
 
-export default function Profile() {
+export default function Profile({ clothingItems, weatherData, handleCardClick }) {
     return (
         <main className="profile">
-            <h1 className="profile__title">User Profile</h1>
-            <p className="profile__info">This is where user profile information will be displayed.</p>
+            <SideBar />
+            <ClothesSection  clothingItems={clothingItems} weatherData={weatherData} handleCardClick={handleCardClick} />
         </main>
     );
 }
