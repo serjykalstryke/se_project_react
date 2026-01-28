@@ -1,7 +1,8 @@
 .cards__text {
-	font-family: "Cabinet Grotesk", sans-serif;
-	font-size: 20px;
-    line-height: 100%;
+	font-family: var(--font-ui-text-1-family);
+	font-size: var(--font-ui-text-1-size);
+	font-weight: var(--font-ui-text-1-weight);
+	line-height: var(--font-ui-text-1-height);
 	color: #000000;
     margin: 40px auto 34px;
 }

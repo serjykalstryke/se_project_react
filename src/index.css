@@ -1,1 +1,21 @@
 @import url('./vendor/normalize.css');
+
+:root {
+  /* UI Text Style 1: 20-24 Bold */
+  --font-ui-text-1-family: "Cabinet Grotesk", sans-serif;
+  --font-ui-text-1-size: 20px;
+  --font-ui-text-1-weight: 700;
+  --font-ui-text-1-height: 24px;
+
+  /* UI Text Style 2: 16-20 Medium */
+  --font-ui-text-2-family: "Cabinet Grotesk", sans-serif;
+  --font-ui-text-2-size: 16px;
+  --font-ui-text-2-weight: 500;
+  --font-ui-text-2-height: 20px;
+
+  /* UI Text Style 2 Bold: 16-20 Bold */
+  --font-ui-text-2-bold-family: "Cabinet Grotesk", sans-serif;
+  --font-ui-text-2-bold-size: 16px;
+  --font-ui-text-2-bold-weight: 700;
+  --font-ui-text-2-bold-height: 20px;
+}

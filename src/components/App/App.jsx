@@ -2,10 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import { weatherApiKey, latitude, longitude } from "../../utils/constants";
-
-import { defaultClothingItems } from "../../utils/constants";
-
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -13,11 +9,17 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import AddGarmentModal from "../AddGarmentModal/AddGarmentModal";
 import ItemModal from "../ItemModal/ItemModal";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal.jsx";
+
+import { getItems, addItem, deleteItem } from "../../utils/api.js";
 
 import {
 	getWeatherCondition,
 	requestWeather,
 	parseWeatherData,
+	weatherApiKey,
+	latitude,
+	longitude,
 } from "../../utils/weatherAPI";
 
 import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnitContext";
@@ -56,9 +58,9 @@ function App() {
 	});
 	const [activeModal, setActiveModal] = React.useState("");
 	const [selectedCard, setSelectedCard] = React.useState(null);
+	const [cardToDelete, setCardToDelete] = useState(null);
 
-	const [clothingItems, setClothingItems] =
-		React.useState(defaultClothingItems);
+	const [clothingItems, setClothingItems] = React.useState([]);
 
 	const handleCardClick = (card) => {
 		setSelectedCard(card);
@@ -76,13 +78,29 @@ function App() {
 	};
 
 	const handleAddGarment = (newGarment) => {
-		const garmentWithId = {
-			_id: Date.now(),
+		addItem({
 			name: newGarment.name,
+			imageUrl: newGarment.link,
 			weather: newGarment.weather,
-			link: newGarment.link,
-		};
-		setClothingItems([...clothingItems, garmentWithId]);
+		})
+			.then((addedItem) => {
+				setClothingItems([addedItem, ...clothingItems]);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	};
+
+	const handleDeleteGarment = (itemId) => {
+		deleteItem(itemId)
+			.then(() => {
+				setClothingItems(
+					clothingItems.filter((item) => item._id !== itemId)
+				);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
 	};
 
 	const handleSubmit = (event) => {
@@ -109,12 +127,25 @@ function App() {
 		}
 	};
 
+	const handleOpenConfirmModal = (card) => {
+		setCardToDelete(card);
+		setActiveModal("confirmDelete");
+	};
+
 	useEffect(() => {
 		requestWeather(weatherApiKey, latitude, longitude)
 			.then((data) => {
 				const parsedData = parseWeatherData(data);
 				const condition = getWeatherCondition(parsedData.temperature);
 				setWeatherData({ ...parsedData, type: condition });
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+
+		getItems()
+			.then((items) => {
+				setClothingItems(items.reverse());
 			})
 			.catch((err) => {
 				console.error(err);
@@ -174,7 +205,15 @@ function App() {
 				isOpen={activeModal === "preview"}
 				handleClose={handleClose}
 				card={selectedCard}
+				handleOpenConfirmModal={handleOpenConfirmModal}
 			/>
+			<ConfirmationModal
+				isOpen={activeModal === "confirmDelete"}
+				handleClose={handleClose}
+				handleDeleteGarment={handleDeleteGarment}
+				card={cardToDelete}
+			/>
+
 		</div>
 	);
 }

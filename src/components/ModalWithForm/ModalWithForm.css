@@ -8,10 +8,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: "Cabinet Grotesk", sans-serif;
-	font-size: 16px;
-	line-height: 20px;
-	font-weight: 700;
+	font-family: var(--font-ui-text-2-bold-family);
+	font-size: var(--font-ui-text-2-bold-size);
+	line-height: var(--font-ui-text-2-bold-height);
+	font-weight: var(--font-ui-text-2-bold-weight);
 	visibility: hidden;
 	opacity: 0;
 	transition:
@@ -48,9 +48,9 @@
 .modal__title {
 	margin: 0;
 	margin-bottom: 24px;
-	font-size: 16px;
-	line-height: 20px;
-	font-weight: 700;
+	font-size: var(--font-ui-text-2-bold-size);
+	line-height: var(--font-ui-text-2-bold-height);
+	font-weight: var(--font-ui-text-2-bold-weight);
 	letter-spacing: 0%;
 }
 

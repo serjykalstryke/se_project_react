@@ -1,39 +1,53 @@
 .modal__content_type_image {
-  padding: 0;           
-  overflow: hidden;     
+	padding: 0;
+	overflow: hidden;
 }
 
 .modal__image {
-  display: block;       
-  width: 100%;
-  height: 498px;         
-  object-fit: cover;    
+	display: block;
+	width: 100%;
+	height: 498px;
+	object-fit: cover;
 }
 
-
 .modal__footer {
-  padding: 20px 24px 24px;
-  background: #fff;
+	padding: 20px 24px 24px;
+	background: #fff;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.modal__delete {
+	color: #ff4d00;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: var(--font-ui-text-2-bold-family);
+	font-size: var(--font-ui-text-2-bold-size);
+	font-weight: var(--font-ui-text-2-bold-weight);
+	line-height: var(--font-ui-text-2-bold-height);
 }
 
 .modal__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 2;
-  background: none;
-  border: none;
-  cursor: pointer;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 2;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
-.modal__caption,.modal__weather {
-    font-family: "Cabinet Grotesk", sans-serif;
-    margin: 0;
-    font-size: 20px;
-    line-height: 24px;
-    font-weight: 700;
+.modal__caption,
+.modal__weather {
+	margin: 0;
+	font-family: var(--font-ui-text-2-bold-family);
+	font-size: var(--font-ui-text-2-bold-size);
+	font-weight: var(--font-ui-text-2-bold-weight);
+	line-height: var(--font-ui-text-2-bold-height);
 }
 
 .modal__weather {
-    margin-top: 12px;
+	margin-top: 12px;
 }

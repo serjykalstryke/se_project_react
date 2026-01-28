@@ -1,3 +1,7 @@
+const weatherApiKey = "90d4018edda83b7466b5bc9d425686c1";
+const latitude = 40.7128;
+const longitude = -74.006;
+
 function getWeatherCondition(temperature) {
   if (temperature >= 86) return "hot";
   if (temperature >= 66) return "warm";
@@ -44,4 +48,4 @@ function parseWeatherData(data) {
 }
 
 
-export { getWeatherCondition, requestWeather, parseWeatherData, getConditionBucket };
+export { getWeatherCondition, requestWeather, parseWeatherData, getConditionBucket, weatherApiKey, latitude, longitude };

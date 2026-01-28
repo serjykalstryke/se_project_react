@@ -23,11 +23,11 @@
 	padding: 8px 16px;
 	border-radius: 8px;
 	background-color: rgba(255, 255, 255, 0.8);
-	font-family: "Cabinet Grotesk", sans-serif;
-	font-size: 16px;
-	line-height: 20px;
-	font-weight: 700;
-
+	color: #00000099;
+	font-family: var(--font-ui-text-2-bold-family);
+	font-size: var(--font-ui-text-2-bold-size);
+	line-height: var(--font-ui-text-2-bold-height);
+	font-weight: var(--font-ui-text-2-bold-weight);
 	max-width: calc(100% - 32px);
 	white-space: nowrap;
 	overflow: hidden;

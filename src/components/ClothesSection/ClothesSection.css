@@ -13,10 +13,10 @@
 
 .clothes-section__button-container p {
     margin: 0;
-    font-family: "Cabinet Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24px;
+    font-family: var(--font-ui-text-1-family);
+    font-size: var(--font-ui-text-1-size);
+    font-weight: var(--font-ui-text-1-weight);
+    line-height: var(--font-ui-text-1-height);
     color: #000000;
 }
 
