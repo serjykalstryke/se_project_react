@@ -12,7 +12,6 @@ function ItemModal({ isOpen, card, handleClose, handleOpenConfirmModal }) {
 
 	const onGarmentDelete = () => {
 		handleOpenConfirmModal(card);
-		handleClose();
 	};
 
 	React.useEffect(() => {

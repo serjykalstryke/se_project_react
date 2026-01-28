@@ -132,6 +132,14 @@ function App() {
 		setActiveModal("confirmDelete");
 	};
 
+	const handleConfirmDelete = () => {
+		if (cardToDelete) {
+			handleDeleteGarment(cardToDelete._id);
+			setCardToDelete(null);
+		}
+		handleClose();
+	};
+
 	useEffect(() => {
 		requestWeather(weatherApiKey, latitude, longitude)
 			.then((data) => {
@@ -183,6 +191,7 @@ function App() {
 							<Profile
 								clothingItems={clothingItems}
 								handleCardClick={handleCardClick}
+								handleAddClick={handleAddClick}
 							/>
 						}
 					/>
@@ -210,8 +219,8 @@ function App() {
 			<ConfirmationModal
 				isOpen={activeModal === "confirmDelete"}
 				handleClose={handleClose}
-				handleDeleteGarment={handleDeleteGarment}
-				card={cardToDelete}
+				handleConfirmDelete={handleConfirmDelete}
+				itemName={cardToDelete?.name}
 			/>
 
 		</div>

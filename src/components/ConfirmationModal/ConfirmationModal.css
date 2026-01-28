@@ -1,0 +1,59 @@
+.confirmation-modal__content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 670px;
+	padding: 60px 151px;
+	font-family: var(--font-ui-text-1-family);
+	font-size: var(--font-ui-text-1-size);
+	font-weight: var(--font-ui-text-1-weight);
+	line-height: var(--font-ui-text-1-height);
+}
+
+.confirmation-modal__close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.confirmation-modal__message {
+	text-align: center;
+	margin-bottom: 40px;
+	width: 100%;
+}
+
+.confirmation-modal__buttons {
+	display: flex;
+	flex-direction: column;
+	max-width: 140px;
+	align-items: center;
+	justify-content: center;
+	gap: 24px;
+}
+
+.confirmation-modal__button_delete {
+	color: #ff4d00;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-wrap: nowrap;
+	font-family: var(--font-ui-text-1-family);
+	font-size: var(--font-ui-text-1-size);
+	font-weight: var(--font-ui-text-1-weight);
+	line-height: var(--font-ui-text-1-height);
+}
+.confirmation-modal__button_cancel {
+	color: #000000;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: var(--font-ui-text-1-family);
+	font-size: var(--font-ui-text-1-size);
+	font-weight: var(--font-ui-text-1-weight);
+	line-height: var(--font-ui-text-1-height);
+}
