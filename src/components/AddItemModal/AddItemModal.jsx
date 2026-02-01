@@ -1,7 +1,7 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
-function AddGarmentModal({ isOpen, handleClose, values, handleChange, resetForm, onSubmit, formError }) {
+function AddItemModal({ isOpen, handleClose, values, handleChange, resetForm, onSubmit, formError }) {
 
 	return (
 		<ModalWithForm
@@ -85,4 +85,4 @@ function AddGarmentModal({ isOpen, handleClose, values, handleChange, resetForm,
 	);
 }
 
-export default AddGarmentModal;
+export default AddItemModal;
