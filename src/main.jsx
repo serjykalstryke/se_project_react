@@ -9,7 +9,7 @@ import { CurrentTemperatureUnitProvider } from './contexts/CurrentTemperatureUni
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <CurrentTemperatureUnitProvider>
-      <BrowserRouter basename="/se_project_react">
+      <BrowserRouter basename="/">
         <App />
       </BrowserRouter>
     </CurrentTemperatureUnitProvider>
