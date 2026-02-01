@@ -1,5 +1,5 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import "./AddGarmentModal.css";
+import "./AddItemModal.css";
 
 function AddGarmentModal({ isOpen, handleClose, values, handleChange, resetForm, onSubmit, formError }) {
 

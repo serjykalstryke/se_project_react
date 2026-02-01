@@ -23,7 +23,7 @@ function Header({
 
 	return (
 		<header className="header">
-			<NavLink to="/dashboard" className="header__logo-link">
+			<NavLink to="/" className="header__logo-link">
 				<img src={logo} alt="wtwr logo" className="header__logo" />
 			</NavLink>
 			<p className="header__date-and-location">
