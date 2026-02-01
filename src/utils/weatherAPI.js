@@ -1,3 +1,5 @@
+import { handleServerResponse } from './api.js';
+
 const weatherApiKey = "90d4018edda83b7466b5bc9d425686c1";
 const latitude = 40.7128;
 const longitude = -74.006;
@@ -26,12 +28,7 @@ function getConditionBucket(conditionId) {
 function requestWeather(weatherApiKey, latitude, longitude) {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${weatherApiKey}`;
 
-  return fetch(url).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Weather API error: ${res.status}`);
-    }
-    return res.json();
-  });
+  return fetch(url).then(handleServerResponse);
 }
 
 function parseWeatherData(data) {

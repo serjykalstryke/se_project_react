@@ -22,12 +22,15 @@ import {
 	longitude,
 } from "../../utils/weatherAPI";
 
-import { useCurrentTemperatureUnit } from "../../contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitProvider } from "../../contexts/CurrentTemperatureUnitContext";
 import { useForm } from "../../hooks/useForm";
 
 function App() {
-	const { currentTemperatureUnit, setCurrentTemperatureUnit } =
-		useCurrentTemperatureUnit();
+	const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+	const handleToggleSwitchChange = () => {
+		setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+	};
 
 	const {
 		values,
@@ -85,6 +88,8 @@ function App() {
 		})
 			.then((addedItem) => {
 				setClothingItems([addedItem, ...clothingItems]);
+				resetFormWithError();
+				setActiveModal("");
 			})
 			.catch((err) => {
 				console.error(err);
@@ -97,6 +102,9 @@ function App() {
 				setClothingItems(
 					clothingItems.filter((item) => item._id !== itemId)
 				);
+				setCardToDelete(null);
+				setActiveModal("");
+				setTimeout(() => setSelectedCard(null), 500);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -122,8 +130,6 @@ function App() {
 			setFormError(errorMessage);
 		} else {
 			handleAddGarment(values);
-			resetFormWithError();
-			handleClose();
 		}
 	};
 
@@ -135,9 +141,7 @@ function App() {
 	const handleConfirmDelete = () => {
 		if (cardToDelete) {
 			handleDeleteGarment(cardToDelete._id);
-			setCardToDelete(null);
 		}
-		handleClose();
 	};
 
 	useEffect(() => {
@@ -160,19 +164,17 @@ function App() {
 			});
 	}, []);
 
-	const handleToggleSwitchChange = () => {
-		setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
-	};
-
 	return (
-		<div className="page">
-			<div className="page__content">
-				<Header
-					handleAddClick={handleAddClick}
-					weatherData={weatherData}
-					handleToggleSwitchChange={handleToggleSwitchChange}
-					currentTemperatureUnit={currentTemperatureUnit}
-				/>
+		<CurrentTemperatureUnitProvider
+			currentTemperatureUnit={currentTemperatureUnit}
+			handleToggleSwitchChange={handleToggleSwitchChange}
+		>
+			<div className="page">
+				<div className="page__content">
+					<Header
+						handleAddClick={handleAddClick}
+						weatherData={weatherData}
+					/>
 				<Routes>
 					<Route path="/" element={<Navigate to="/dashboard" replace />} />
 					<Route
@@ -224,6 +226,7 @@ function App() {
 			/>
 
 		</div>
+		</CurrentTemperatureUnitProvider>
 	);
 }
 

@@ -1,7 +1,7 @@
 import "./ModalWithForm.css";
 
-import React from "react";
 import xButtonGray from "../../assets/xButtonGray.svg";
+import { useEscapeKey, createOverlayClickHandler } from "../../hooks/modalFunctions";
 
 function ModalWithForm({
 	name,
@@ -12,22 +12,9 @@ function ModalWithForm({
 	handleClose,
 	onSubmit,
 }) {
-	const handleOverlayClick = (event) => {
-		if (event.target === event.currentTarget) {
-			handleClose();
-		}
-	};
+	const handleOverlayClick = createOverlayClickHandler(handleClose);
 
-	React.useEffect(() => {
-		if (!isOpen) return;
-
-		const handleEsc = (event) => {
-			if (event.key === "Escape") handleClose();
-		};
-
-		document.addEventListener("keydown", handleEsc);
-		return () => document.removeEventListener("keydown", handleEsc);
-	}, [isOpen, handleClose]);
+	useEscapeKey(isOpen, handleClose);
 
 	return (
 		<div

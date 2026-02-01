@@ -29,9 +29,11 @@ function WeatherCard({ weatherData }) {
 	const { currentTemperatureUnit } = useCurrentTemperatureUnit();
 
 	const displayTemp =
-		currentTemperatureUnit === "C"
-			? Math.round(((weatherData.temperature - 32) * 5) / 9) 
-			: weatherData.temperature;
+		typeof weatherData.temperature === "number"
+			? currentTemperatureUnit === "C"
+				? Math.round(((weatherData.temperature - 32) * 5) / 9)
+				: weatherData.temperature
+			: null;
 
 	const bucket = getConditionBucket(weatherData.conditionId);
 	const timeKey = weatherData.isDay ? "day" : "night";

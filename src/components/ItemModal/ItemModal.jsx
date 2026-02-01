@@ -1,29 +1,20 @@
 import "./ItemModal.css";
 
-import React from "react";
 import xButton from "../../assets/xButton.svg";
+import {
+	useEscapeKey,
+	createOverlayClickHandler,
+} from "../../hooks/modalFunctions";
 
 function ItemModal({ isOpen, card, handleClose, handleOpenConfirmModal }) {
-	const handleOverlayClick = (event) => {
-		if (event.target === event.currentTarget) {
-			handleClose();
-		}
-	};
-
 	const onGarmentDelete = () => {
 		handleOpenConfirmModal(card);
 	};
 
-	React.useEffect(() => {
-		if (!isOpen) return;
+	const handleOverlayClick = createOverlayClickHandler(handleClose);
 
-		const handleEsc = (event) => {
-			if (event.key === "Escape") handleClose();
-		};
+	useEscapeKey(isOpen, handleClose);
 
-		document.addEventListener("keydown", handleEsc);
-		return () => document.removeEventListener("keydown", handleEsc);
-	}, [isOpen, handleClose]);
 	return (
 		<div
 			className={`modal ${isOpen ? "modal__opened" : ""}`}

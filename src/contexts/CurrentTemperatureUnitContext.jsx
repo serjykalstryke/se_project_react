@@ -1,12 +1,10 @@
-import {createContext, useState, useContext} from 'react';
+import {createContext, useContext} from 'react';
 
 const CurrentTemperatureUnitContext = createContext();
 
-export const CurrentTemperatureUnitProvider = ({ children }) => {
-    const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
-
+export const CurrentTemperatureUnitProvider = ({ children, currentTemperatureUnit, handleToggleSwitchChange }) => {
     return (
-        <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, setCurrentTemperatureUnit }}>
+        <CurrentTemperatureUnitContext.Provider value={{ currentTemperatureUnit, handleToggleSwitchChange }}>
             {children}
         </CurrentTemperatureUnitContext.Provider>
     );

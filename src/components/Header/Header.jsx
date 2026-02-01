@@ -9,8 +9,6 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 function Header({
 	handleAddClick,
 	weatherData,
-	handleToggleSwitchChange,
-	currentTemperatureUnit,
 }) {
 	const currentDate = new Date().toLocaleString("default", {
 		month: "long",
@@ -31,8 +29,6 @@ function Header({
 			</p>
 			<ToggleSwitch
 				className="header__toggle"
-				isOn={currentTemperatureUnit === "C"}
-				handleToggle={handleToggleSwitchChange}
 			/>
 			<button
 				type="button"

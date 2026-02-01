@@ -1,8 +1,16 @@
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
-function AddItemModal({ isOpen, handleClose, values, handleChange, resetForm, onSubmit, formError }) {
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
+function AddItemModal({
+	isOpen,
+	handleClose,
+	values,
+	handleChange,
+	resetForm,
+	onSubmit,
+	formError,
+}) {
 	return (
 		<ModalWithForm
 			name="add-garment"
@@ -22,6 +30,7 @@ function AddItemModal({ isOpen, handleClose, values, handleChange, resetForm, on
 					name="name"
 					value={values.name}
 					onChange={handleChange}
+					required
 				/>
 			</label>
 
@@ -35,11 +44,14 @@ function AddItemModal({ isOpen, handleClose, values, handleChange, resetForm, on
 					name="link"
 					value={values.link}
 					onChange={handleChange}
+					required
 				/>
 			</label>
 
 			<fieldset className="add-garment-modal__radio-buttons">
-				<legend className="add-garment-modal__legend">Select the weather type</legend>
+				<legend className="add-garment-modal__legend">
+					Select the weather type
+				</legend>
 
 				<label htmlFor="hot" className="add-garment-modal__label_type_radio">
 					<input
@@ -50,6 +62,7 @@ function AddItemModal({ isOpen, handleClose, values, handleChange, resetForm, on
 						value="hot"
 						checked={values.weather === "hot"}
 						onChange={handleChange}
+						required
 					/>
 					<span className="add-garment-modal__radio-text">Hot</span>
 				</label>
@@ -80,7 +93,11 @@ function AddItemModal({ isOpen, handleClose, values, handleChange, resetForm, on
 					<span className="add-garment-modal__radio-text">Cold</span>
 				</label>
 			</fieldset>
-			<p className={`add-garment-modal__error ${formError ? '' : 'add-garment-modal__error_hidden'}`}>{formError || 'Placeholder'}</p>
+			<p
+				className={`add-garment-modal__error ${formError ? "" : "add-garment-modal__error_hidden"}`}
+			>
+				{formError || "Placeholder"}
+			</p>
 		</ModalWithForm>
 	);
 }

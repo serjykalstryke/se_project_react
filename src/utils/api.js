@@ -10,6 +10,9 @@ const handleServerResponse = (res) => {
     return res.json();
 }
 
+// Export for reuse across API modules
+export { handleServerResponse };
+
 const getItems = () => {
     return fetch(`${baseUrl}/items`, {
         headers
