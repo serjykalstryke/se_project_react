@@ -176,9 +176,9 @@ function App() {
 						weatherData={weatherData}
 					/>
 				<Routes>
-					<Route path="/" element={<Navigate to="/dashboard" replace />} />
+					{/* <Route path="/" element={<Navigate to="/" replace />} /> */}
 					<Route
-						path="/dashboard"
+						path="/"
 						element={
 							<Main
 								weatherData={weatherData}
@@ -197,7 +197,7 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="*" element={<Navigate to="/dashboard" replace />} />
+					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 
 				<Footer />

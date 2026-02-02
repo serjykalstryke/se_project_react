@@ -22,7 +22,7 @@
 	margin: 0;
 	padding: 8px 16px;
 	border-radius: 8px;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: #FFFFFF;
 	color: #00000099;
 	font-family: var(--font-ui-text-2-bold-family);
 	font-size: var(--font-ui-text-2-bold-size);
@@ -32,19 +32,17 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	z-index: 1;
 }
 
 .card__image {
-	position: static; 
+	position: absolute;
+	inset: 0;
 	width: 100%;
-	max-width: 226px; 
-	max-height: 100%;
-	height: auto;
-	object-fit: contain; 
+	height: 100%;
+	object-fit: cover;
 	display: block;
-	max-height: calc(
-		326px - 50px - 16px
-	); 
+	z-index: 0;
 }
 
 @media (max-width: 1200px) {
