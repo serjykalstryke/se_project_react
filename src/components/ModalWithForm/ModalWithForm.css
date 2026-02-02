@@ -17,6 +17,8 @@
 	transition:
 		opacity 0.5s ease-in-out,
 		visibility 0s linear 0.5s;
+
+	z-index: 2;
 }
 
 .modal__opened {
