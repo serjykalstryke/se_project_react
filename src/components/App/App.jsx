@@ -18,8 +18,6 @@ import {
 	requestWeather,
 	parseWeatherData,
 	weatherApiKey,
-	latitude,
-	longitude,
 } from "../../utils/weatherAPI";
 
 import { CurrentTemperatureUnitProvider } from "../../contexts/CurrentTemperatureUnitContext";
@@ -27,6 +25,8 @@ import { useForm } from "../../hooks/useForm";
 
 function App() {
 	const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+	const [latitude, setLatitude] = useState(null);
+	const [longitude, setLongitude] = useState(null);
 
 	const handleToggleSwitchChange = () => {
 		setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -145,15 +145,26 @@ function App() {
 	};
 
 	useEffect(() => {
-		requestWeather(weatherApiKey, latitude, longitude)
-			.then((data) => {
-				const parsedData = parseWeatherData(data);
-				const condition = getWeatherCondition(parsedData.temperature);
-				setWeatherData({ ...parsedData, type: condition });
-			})
-			.catch((err) => {
-				console.error(err);
-			});
+		// Get user's location using Geolocation API
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					setLatitude(position.coords.latitude);
+					setLongitude(position.coords.longitude);
+				},
+				(error) => {
+					console.error("Error getting geolocation:", error);
+					// Fallback to default location (New York)
+					setLatitude(40.7128);
+					setLongitude(-74.006);
+				}
+			);
+		} else {
+			console.error("Geolocation is not supported by this browser.");
+			// Fallback to default location (New York)
+			setLatitude(40.7128);
+			setLongitude(-74.006);
+		}
 
 		getItems()
 			.then((items) => {
@@ -163,6 +174,21 @@ function App() {
 				console.error(err);
 			});
 	}, []);
+
+	// Fetch weather when location is available
+	useEffect(() => {
+		if (latitude !== null && longitude !== null) {
+			requestWeather(weatherApiKey, latitude, longitude)
+				.then((data) => {
+					const parsedData = parseWeatherData(data);
+					const condition = getWeatherCondition(parsedData.temperature);
+					setWeatherData({ ...parsedData, type: condition });
+				})
+				.catch((err) => {
+					console.error(err);
+				});
+		}
+	}, [latitude, longitude]);
 
 	return (
 		<CurrentTemperatureUnitProvider
