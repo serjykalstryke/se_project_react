@@ -45,6 +45,25 @@
 	z-index: 0;
 }
 
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__like-button {
+  width: 18px;
+  height: 15px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.card__like-button_active {
+  opacity: 1;
+}
+
 @media (max-width: 1200px) {
 	.card {
 		flex-basis: calc((100% - 2 * 21px) / 3);
