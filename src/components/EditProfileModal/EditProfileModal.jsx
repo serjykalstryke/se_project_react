@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import "./EditProfileModal.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function EditProfileModal({ isOpen, handleClose, onUpdateUser }) {
